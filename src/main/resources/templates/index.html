@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https://cdn.usebootstrap.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+<style>
+
+    /* CSS Document */
+    /*
+    .bd {
+      border: solid 2px #6506D9;
+      box-shadow: 0px 0px 1px 2px #673AB7;
+      box-sizing: border-box;
+      padding: 30px;
+    }
+    */
+
+    .btn-color {
+        border-radius: 10px;
+        color: #fff;
+        /*    background-image: linear-gradient(to right, #8ED1FC, #0693E3);*/
+        background-color: #6206FB;
+        padding: 15px;
+        cursor: pointer;
+        border: none !important;
+        margin-top: 10px
+    }
+    .btn-color:hover {
+        color: #fff;
+        /*    background-image: linear-gradient(to right, #0693E3, #8ED1FC)*/
+        background-color: #3C196B;
+    }
+    .pw a{
+        color: black;
+        text-decoration: none;
+    }
+    .pw{
+        text-align: center;
+    }
+    .bottom {
+        width: 100%;
+        margin-top: 50px !important
+    }
+    .bottom a{
+        color: black;
+        text-decoration: none;
+    }
+    .sm-text {
+        font-size: 15px
+    }
+    .btn-white {
+        border-radius: 50px;
+        color: black;
+        background-color: #fff;
+        padding: 8px 40px;
+        cursor: pointer;
+        border: 2px solid #8ED1FC !important;
+    }
+
+    .btn-white:hover {
+        color: #fff;
+        text-decoration: none;
+        background-image: linear-gradient(to right, #8ED1FC, #8ED1FC)
+    }
+
+    .txt1{
+        font-weight:600;
+    }
+
+    /*Text Box*/
+    /*
+    input {
+        outline: none;
+        border: none;
+    }
+
+    textarea {
+      outline: none;
+      border: none;
+    }
+
+    textarea:focus, input:focus {
+      border-color: transparent !important;
+    }
+
+    input:focus::-webkit-input-placeholder { color:transparent;}
+    input:focus:-moz-placeholder { color:transparent; }
+    input:focus::-moz-placeholder { color:transparent; }
+    input:focus:-ms-input-placeholder { color:transparent; }
+
+    textarea:focus::-webkit-input-placeholder { color:white; }
+    textarea:focus:-moz-placeholder { color:white; }
+    textarea:focus::-moz-placeholder { color:white; }
+    textarea:focus:-ms-input-placeholder { color:white; }
+
+    input::-webkit-input-placeholder { color: black;}
+    input:-moz-placeholder { color: black;}
+    input::-moz-placeholder { color: black;}
+    input:-ms-input-placeholder { color: black;}
+
+    textarea::-webkit-input-placeholder { color: white;}
+    textarea:-moz-placeholder { color: white;}
+    textarea::-moz-placeholder { color: white;}
+    textarea:-ms-input-placeholder { color: white;}
+    */
+
+
+    .container-login100 {
+        width: 100%;
+        min-height: 100vh;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        background: #B2EAF7;
+    }
+    .wrap-login100 {
+        width: 500px;
+        height: 600px;
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+        -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+        -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    }
+    .wrap-input100 {
+        width: 100%;
+        height: 40px;
+        position: relative;
+        background-color: white;
+        border: 1px solid #e6e6e6;
+        border-radius: 5px;
+    }
+
+    .input100 {
+        font-family: Poppins-Regular;
+        color: black;
+        line-height: 0px;
+        font-size: 20px;
+        display: block;
+        width: 100%;
+        background: transparent;
+        height: 60px;
+        padding-bottom: 20px
+    }
+
+    /*placeholder*/
+    ::placeholder { /* chạy tốt trên Chrome, Firefox, Opera, Safari 10.1+ */
+        color: darkgray!important;
+        opacity: 0.4; /* Firefox */
+        text-align: left;
+        font-size: 14px;
+    }
+    ::-ms-input-placeholder { /* chạy trên Microsoft Edge */
+        color: darkgray !important;
+    }
+
+
+    .form-input {
+        position: relative;
+        font-family: "Source Sans Pro", sans-serif;
+        font-weight: 600;
+        width: 100%;
+        height: 40px;
+        border: none;
+        padding: 0 10px;
+        box-shadow: none;
+        outline: none;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+    .form-input.smooth-corner {
+        border-radius: 5px;
+    }
+    .form-input.basic {
+        border: 2px solid rgba(0, 0, 0, .15);
+    }
+    .form-input.basic:hover {
+        border-color: rgba(0, 0, 0, .35);
+        box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    }
+    .form-input.basic:focus {
+        border-color: #4285F4;
+        box-shadow: 0 0 10px rgba(66, 133, 244, .5);
+    }
+
+</style>
+<div class="container-login100">
+    <div class="wrap-login100 pt-5">
+        <div class="col justify-content-center align-items-center">
+
+            <h3 style="text-align: center">Account Login</h3>
+
+            <!--/*@thymesVar id="Login" type=""*/-->
+            <form class="pt-4" th:action="@{/login}" th:object="${user}" method="post">
+
+                <div class="pb-2"><span class="txt1">Username</span></div>
+                <div class="col-13">
+                    <input type="text" th:field="${user.username}" class="form-input basic smooth-corner" placeholder="Type your username"
+                          /></div>
+
+                <div class=" pt-3 pb-2"><span class="txt1">Password</span></div>
+                <div class="col-13">
+                    <input type="password" th:field="${user.password}" class="form-input basic smooth-corner" placeholder="Type your password"
+                           /></div>
+
+                <!--                <div class="form-check pt-3">-->
+                <!--                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>-->
+                <!--                    <label class="form-check-label" for="flexCheckChecked"> Remember me </label>-->
+                <!--                </div>-->
+
+                <div class="row justify-content-center my-3 px-3">
+                    <input type="submit" class="btn-block btn-color" value="login"/>
+                </div>
+
+                <!--                <div class="pw"> <a href="#" class="ForgetPwd">Forget Password?</a> </div>-->
+
+                <!--                <div class="bottom text-center mb-5">-->
+                <!--                    <p href="#" class="sm-text mx-auto mb-3">Don't have an account?-->
+
+                <!--                        <button class="btn btn-outline-success ml-4">-->
+                <!--                            <a href="register.html" target="_self">Create new</a>-->
+                <!--                        </button>-->
+                <!--                    </p>-->
+                <!--                </div>-->
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

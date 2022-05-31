@@ -1,0 +1,150 @@
+/*---------------------------------tiêu đề điện thoại---------------------------------*/
+.tieude {
+    font-family: Arial;
+    font-size: 17px;
+    font-weight: 700;
+    margin-left: 115px;
+    margin-top: 15px;
+}
+
+/*---------------------------------Dien thoai noi bat - Phu kien chinh hang---------------------------------*/
+.col-xs-5ths,
+.col-sm-5ths,
+.col-md-5ths,
+.col-lg-5ths {
+    position: relative;
+    min-height: 1px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.col-xs-5ths {
+    width: 20%;
+    float: left;
+}
+
+@media (min-width: 768px) {
+    .col-sm-5ths {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-5ths {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 1200px) {
+    .col-lg-5ths {
+        width: 20%;
+        float: left;
+    }
+}
+
+.div1 {
+    margin: 10px 100px 50px;
+}
+
+.sizesp img {
+    width: 220px;
+}
+
+.sizesp {
+    position: relative;
+    padding: 15px;
+    padding-top: 40px
+
+}
+
+.bodersp {
+    border: solid 0.3px #E5E5E5;
+    height: 620px;
+}
+
+.nameproduct {
+    font-weight: 400;
+    position: relative;
+    top: 80px;
+    font-size: 18px;
+    padding-left: 10px;
+    font-family: arial;
+    color: black!important;
+}
+.nameproduct p{
+    text-decoration: none;
+}
+.price {
+    position: absolute;
+    bottom: 120px;
+    padding-left: 45px;
+    font-size: 22px;
+    color: red;
+    font-weight: 600;
+}
+
+.inforproduct {
+    color: black;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.prods-group ul li {
+    padding: 5px 8px 5px !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 2px;
+    color: #333;
+    display: inline-flex !important;
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 5px;
+    margin-right: 4px;
+    margin-top: 10px;
+}
+
+.prods-group ul li.act, .prods-group ul li:hover {
+    border-color: #2f80ed !important;
+    color: #2f80ed !important;
+}
+
+.listproduct {
+    display: grid;
+    grid-auto-rows: minmax(min-content,max-content);
+
+    border-left: 1px solid #f1f1f1;
+    border-top: 1px solid #f1f1f1;
+}
+.button{
+
+    border: solid 2px;
+    border-radius: 4px;
+    border-color: orangered;
+    background-color: white;
+    margin-left: 30px;
+    margin-top: 180px;
+    padding: 5px 15px;
+}
+.buttonorder{
+    border: solid 2px;
+    border-radius: 4px;
+    border-color: dodgerblue;
+    background-color: white;
+    margin-bottom: 10px;
+    padding: 5px 15px;
+}
+/*---------------------------------Grid content---------------------------------*/
+.itemimg {
+    transition: box-shadow 0.3s;
+}
+
+.itemimg:hover {
+    -webkit-box-shadow: 0 2px 12px rgba(0,0,0,.12);
+    -moz-box-shadow: 0 2px 12px rgba(0,0,0,.12);
+    box-shadow: 0px 2px 12px rgba(0,0,0,.12);
+}
+.link a {
+    text-decoration: none !important;
+}

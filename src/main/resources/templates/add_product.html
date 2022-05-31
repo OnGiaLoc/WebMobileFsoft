@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Products</title>
+    <link rel="stylesheet" href="https://cdn.usebootstrap.com/bootstrap/5.0.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" > </script>
+
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/addcss.css}">-->
+</head>
+
+<body>
+<style>
+
+    /* CSS Document */
+    body {
+        min-width: 1496px;
+        position: relative;
+        overflow-x: auto;
+    }
+
+    .text {
+        font-size: 30px;
+        margin-left: 100px;
+    }
+
+    .button {
+
+        border: solid 2px;
+        border-radius: 4px;
+        border-color: purple;
+        background-color: white;
+        margin-left: 1400px;
+        margin-bottom: 10px;
+        padding: 5px 15px;
+    }
+
+    .title {
+        font-weight: 450;
+        font-size: 18px;
+        margin: 50px 50px 10px 40px;
+    }
+
+    .editform {
+        width: 100%;
+        height: 40px;
+        position: relative;
+        background-color: white;
+        border: 1px solid #e6e6e6;
+        border-radius: 5px;
+    }
+
+    .position {
+        margin-left: 150px;
+    }
+
+    .buttonSubmit {
+        border: solid 2px;
+        border-radius: 4px;
+        border-color: dodgerblue;
+        background-color: white;
+        margin-left: 400px;
+        margin-bottom: 10px;
+        padding: 5px 15px;
+    }
+</style>
+<div class="bg-info">
+    <p class="text">Add Products</p>
+    <form th:action="@{/logout}" method="post">
+        <button class="button" value="Logout">Logout</button>
+    </form>
+</div>
+<div class="container-sm">
+    <div class="title">
+        <p>Add New Product</p>
+    </div>
+    <hr>
+    <form class="position" th:action="@{/product/save}" method="post" th:object="${product}" enctype="multipart/form-data">
+        <div class="mb-3 row w-75 ">
+            <label class="col col-form-">Product Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control editform" required maxlength="45"
+                       th:field="${product.product_name}">
+            </div>
+        </div>
+
+        <div class="mb-3 row w-75 ">
+            <label class="col col-form-label ">Unit Price</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control editform money" th:field="${product.price}">
+            </div>
+        </div>
+
+        <div class="mb-3 row w-75 ">
+            <label class="col col-form-label ">Units In Stock</label>
+            <div class="col-sm-10">
+                <input type="number" class="form-control editform" th:field="${product.stock}">
+            </div>
+        </div>
+
+        <div class="mb-3 row w-75 ">
+            <label class="col-2 col-form-">Decription</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" aria-label="With textarea" th:field="${product.description}"></textarea>
+            </div>
+        </div>
+
+        <div class="mb-3 row w-75 ">
+            <label class="col-2 col-form-label">Manufacturer</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control editform" th:field="${product.manufacturer}">
+            </div>
+        </div>
+
+        <div class="mb-3 row w-75 ">
+            <label class="col-2 col-form-label ">Category</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control editform" th:field="${product.category}">
+            </div>
+        </div>
+        <label class="col-2 col-form-label ">Condition</label>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1"
+                   th:field="${product.conditiontype}">
+            <label class="form-check-label" for="inlineCheckbox1">New</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="2"
+                   th:field="${product.conditiontype}">
+            <label class="form-check-label" for="inlineCheckbox2">Old</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="3"
+                   th:field="${product.conditiontype}">
+            <label class="form-check-label" for="inlineCheckbox3">Refurbished</label>
+        </div>
+        <div class="mb-3 ">
+            <label class="form-label">Product Image File</label>
+            <input class="col-4 col-form-label" name="fileImage" id="fileImage" type="file" accept="image/png, image/jpeg" >
+            <img id="thumbnail" alt="photo" width="200px">
+        </div>
+        <button type="submit" class="buttonSubmit">Add Product</button>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#fileImage').change(function (){
+        showImageThumbnail(this);
+        });
+
+    });
+    function showImageThumbnail(fileInput){
+        file = fileInput.files[0];
+        reader = new FileReader();
+
+        reader.onload = function(e){
+            $('#thumbnail').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(file);
+    }
+</script>
+
+</body>
+</html>

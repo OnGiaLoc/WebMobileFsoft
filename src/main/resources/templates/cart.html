@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+
+    <!--bstrap -->
+    <link rel="stylesheet" href="https://cdn.usebootstrap.com/bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.2/font/bootstrap-icons.min.css">
+<!--    <link rel="stylesheet" href="../static/css/cartcss.css">-->
+</head>
+
+<body>
+<style>
+    /* CSS Document */
+    body {
+        min-width: 1496px;
+        position: relative;
+        overflow-x: auto;
+        background: #f4f5f7;
+    }
+    .text{
+        font-size: 40px;
+        margin-left: 100px;
+    }
+    .button{
+
+        border: solid 2px;
+        border-radius: 4px;
+        border-color: purple;
+        background-color: white;
+        margin-left: 1400px;
+        margin-bottom: 10px;
+        padding: 5px 15px;
+    }
+    .title{
+        font-weight: 450;
+        font-size: 18px;
+        margin:50px 50px 10px 40px;
+    }
+
+    .buttonDel{
+        border: solid 2px;
+        border-radius: 4px;
+        border-color: red;
+        background-color: white;
+        margin-bottom: 10px;
+        padding: 5px 15px;
+    }
+    .right{
+        margin-top: 80px;
+        margin-left: 550px;
+    }
+
+    .cart-container {
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 30px;
+    }
+    .cart-container .cart-body {
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 30px 0 20px;
+        margin: 20px 0 30px;
+    }
+</style>
+<div class="bg-info">
+    <p class="text">Cart <i class="bi bi-cart-check"></i></p>
+</div>
+<div class="container-sm">
+    <div class="title">
+        <p>All the selected products in your cart</p>
+    </div>
+    <hr>
+    <div class="cart-container">
+        <table class="table table-hover ">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Unit price</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="cart,state:${getCartDetails}">
+                <th:block th:each="product:${getProduct}">
+
+                    <tr th:if="${cart.getProduct_id()==product.getProduct_id()}">
+                        <td th:utext="${state.count}">count</td>
+                        <td>[[${product.product_name}]]</td>
+                        <td>[[${cart.quantity}]]</td>
+                        <td>[[${product.price}]] USD </td>
+                        <td>[[${product.price*cart.quantity}]] USD </td>
+                        <td>
+                           <a th:href="@{'/cart/remove/'+${cart.cartdetail_id}}"><button class="buttonDel"><i class="bi bi-trash3"></i></button></a>
+                        </td>
+                    </tr>
+                </th:block>
+            </th:block>
+            </tbody>
+        </table>
+        <div class="col-md-12 order-1 order-lg-2 col-lg-7 col-xl-6 right">
+            <div class="order-total table-responsive ">
+                <table class="table table-borderless text-right">
+                    <tbody>
+                    <tr>
+                        <td>Sub Total :</td>
+                        <td>$1000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Sale:</td>
+                        <td>$0.00</td>
+                    </tr>
+                    <tr>
+                        <td class="f-w-7 font-18"><h4>Amount :</h4></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="cart-footer text-right">
+        <button type="button" onclick="backShow()" class="btn btn-primary my-1"><i class="ri-save-line mr-2"></i>Continute shopping</button>
+        <a th:href="@{/cart/clear}" class="text-decoration-none"> <button type="button" class="btn btn-danger my-1"><i class="ri-save-line mr-2"></i>Clear Cart</button> </a>
+        <a href="page-checkout.html" class="btn btn-success my-1">Checkout<i class="ri-arrow-right-line ml-2"></i></a>
+    </div>
+</div>
+<script type="text/javascript">
+    function backShow() {
+        window.location = "[[@{/list_product/show}]]"
+    }
+</script>
+</body>
+</html>
