@@ -30,8 +30,18 @@ CREATE TABLE `cart_details` (
   PRIMARY KEY (`cartdetail_id`),
   KEY `cart_id` (`cart_id`),
   CONSTRAINT `cart_details_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`cart_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart_details`
+--
+
+LOCK TABLES `cart_details` WRITE;
+/*!40000 ALTER TABLE `cart_details` DISABLE KEYS */;
+INSERT INTO `cart_details` VALUES (3,2,21,2),(4,2,22,1),(21,1,24,1);
+/*!40000 ALTER TABLE `cart_details` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -42,4 +52,4 @@ CREATE TABLE `cart_details` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-31 22:40:28
+-- Dump completed on 2022-06-01  0:13:33
