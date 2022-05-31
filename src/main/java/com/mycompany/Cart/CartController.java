@@ -47,12 +47,17 @@ public class CartController {
             int cartid = (int) session.getAttribute("cartid");
             List<CartDetails> getCartDetails = cartDetailsService.getCartDetail(cartid);
             model.addAttribute("getCartDetails", getCartDetails);
+            int total = 0;
+
             List<Product> getProduct = new ArrayList<>();
             for (int i = 0; i < getCartDetails.size(); i++) {
                 Product product = productRepository.findById((int) getCartDetails.get(i).getProduct_id()).get();
                 getProduct.add(product);
+               int x = product.getPrice()*getCartDetails.get(i).getQuantity();
+                total += x;
             }
             model.addAttribute("getProduct", getProduct);
+            model.addAttribute("total", total);
             return "cart";
         }
     }
